@@ -1,0 +1,44 @@
+{
+    "manifest_version": 2,
+  
+    "name": "AutoFAQ CRM2 Pool Receiver (AutoFAQ)",
+    "description": "Receiving current CRM2 status via message from skyeng.slack.com > #autofaq-crm2-notifier (prod stage)",
+    "version": "0.93",
+    "icons": {
+      "128": "icon128.png",
+      "48": "icon48.png",
+      "16": "icon16.png"
+    },
+
+    "background":
+    {
+      "scripts": ["statusChecker.js", "jquery-3.1.1.js"],
+      "persistent": false
+    },
+
+    "content_scripts": 
+    [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": ["jquery-3.1.1.js", "statusChecker.js"]
+        }
+    ],
+
+    "permissions": [
+      "activeTab",
+      "tabs",
+      "*://*/*"
+    ],
+
+
+  
+    "browser_action": {
+      "default_icon": {
+        "16": "icon16.png",
+        "32": "icon_red.png"
+    },
+      "default_popup": "popup.html"
+    }
+  }
